@@ -9,6 +9,7 @@
       font-family: Arial, sans-serif;
       background: #f4f6fb;
       color: #222;
+      line-height: 1.6;
     }
 
     header {
@@ -24,6 +25,7 @@
       text-align: center;
       position: sticky;
       top: 0;
+      z-index: 10;
     }
 
     nav a {
@@ -52,6 +54,11 @@
       padding: 15px;
       border-radius: 10px;
       overflow-x: auto;
+      white-space: pre-wrap;
+    }
+
+    code {
+      font-family: Consolas, monospace;
     }
 
     .point {
@@ -75,6 +82,10 @@
       background: #2b5cff;
       color: white;
       cursor: pointer;
+    }
+
+    button:hover {
+      background: #1f45d8;
     }
 
     .answer {
@@ -112,7 +123,7 @@
   <pre><code>int i = 1;
 int sum = 0;
 
-while (i <= 10) {
+while (i &lt;= 10) {
     sum += i;
     i++;
 }
@@ -131,7 +142,7 @@ printf("%d", sum);</code></pre>
 do {
     printf("%d\n", i);
     i++;
-} while (i <= 5);</code></pre>
+} while (i &lt;= 5);</code></pre>
 
   <div class="point">
     do-while문은 조건이 거짓이어도 최소 한 번은 실행된다. while 뒤에는 세미콜론을 붙여야 한다.
@@ -140,15 +151,15 @@ do {
   <h3>for문</h3>
   <p>for문은 반복 횟수가 정해져 있을 때 주로 사용한다.</p>
 
-  <pre><code>for (int i = 1; i <= 10; i++) {
+  <pre><code>for (int i = 1; i &lt;= 10; i++) {
     printf("%d ", i);
 }</code></pre>
 
   <h3>중첩 for문</h3>
   <p>중첩 for문은 for문 안에 또 다른 for문을 작성하는 방식이다.</p>
 
-  <pre><code>for (int i = 2; i <= 9; i++) {
-    for (int j = 1; j <= 9; j++) {
+  <pre><code>for (int i = 2; i &lt;= 9; i++) {
+    for (int j = 1; j &lt;= 9; j++) {
         printf("%d x %d = %d\n", i, j, i * j);
     }
 }</code></pre>
@@ -176,7 +187,7 @@ int main() {
   <p>재귀 함수는 함수 내부에서 자기 자신을 다시 호출하는 함수이다.</p>
 
   <pre><code>long long fact(int n) {
-    if (n <= 1) return 1;
+    if (n &lt;= 1) return 1;
     return n * fact(n - 1);
 }</code></pre>
 
@@ -294,7 +305,9 @@ else
   <h3>구조체</h3>
   <p>구조체는 서로 다른 자료형의 데이터를 하나로 묶어 관리할 수 있는 자료형이다.</p>
 
-  <pre><code>struct Student {
+  <pre><code>#include &lt;string.h&gt;
+
+struct Student {
     char name[20];
     int num;
     float score;
@@ -325,38 +338,38 @@ s.score = 95.5;</code></pre>
 
   <div class="quiz">
     <p>1. 문자열 "apple"을 저장하려면 최소 char s[ ___ ]; 이어야 한다.</p>
-    <button onclick="showAnswer(1)">정답 보기</button>
+    <button type="button" onclick="showAnswer(1)">정답 보기</button>
     <div class="answer" id="a1">정답: 6</div>
   </div>
 
   <div class="quiz">
     <p>2. strcmp("abc", "abc")의 반환값은?</p>
-    <button onclick="showAnswer(2)">정답 보기</button>
+    <button type="button" onclick="showAnswer(2)">정답 보기</button>
     <div class="answer" id="a2">정답: 0</div>
   </div>
 
   <div class="quiz">
     <p>3. 1부터 10까지의 난수를 만들려면 rand() % ___ + 1을 사용한다.</p>
-    <button onclick="showAnswer(3)">정답 보기</button>
+    <button type="button" onclick="showAnswer(3)">정답 보기</button>
     <div class="answer" id="a3">정답: 10</div>
   </div>
 
   <div class="quiz">
     <p>4. 함수가 종료되어도 값을 유지하는 키워드는?</p>
-    <button onclick="showAnswer(4)">정답 보기</button>
+    <button type="button" onclick="showAnswer(4)">정답 보기</button>
     <div class="answer" id="a4">정답: static</div>
   </div>
 
   <div class="quiz">
     <p>5. 다른 파일의 전역 변수를 가져올 때 사용하는 키워드는?</p>
-    <button onclick="showAnswer(5)">정답 보기</button>
+    <button type="button" onclick="showAnswer(5)">정답 보기</button>
     <div class="answer" id="a5">정답: extern</div>
   </div>
 </section>
 
 <script>
   function showAnswer(num) {
-    const answer = document.getElementById("a" + num);
+    var answer = document.getElementById("a" + num);
 
     if (answer.style.display === "block") {
       answer.style.display = "none";
